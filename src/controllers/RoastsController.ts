@@ -12,6 +12,7 @@ router.post('/', async (req: Request, res: Response) => {
     await roastRepository.save(roast);
   } catch (e) {
     res.status(400).json({ error: e.sqlMessage });
+    return;
   }
 
   res.status(201).json(roast);
