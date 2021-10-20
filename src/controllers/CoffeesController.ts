@@ -11,12 +11,10 @@ router.post('/', async (req: Request, res: Response) => {
   try {
     await coffeeRepository.save(coffee);
   } catch (e) {
-    res.status(400);
-    res.json({ error: e.sqlMessage });
+    res.status(400).json({ error: e.sqlMessage });
   }
 
-  res.status(201);
-  res.json(coffee);
+  res.status(201).json(coffee);
 });
 
 router.get('/', async (req: Request, res: Response) => {

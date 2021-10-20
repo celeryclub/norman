@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Roast } from './Roast';
 
 @Entity('coffees')
 export class Coffee {
@@ -29,7 +30,7 @@ export class Coffee {
   @Column()
   grade: string;
 
-  @Column()
+  @Column({ type: 'date' })
   arrivalDate: Date;
 
   @Column()
@@ -38,7 +39,6 @@ export class Coffee {
   @Column({
     nullable: true,
   })
-  @Column()
   rating: number;
 
   @Column({
@@ -46,4 +46,7 @@ export class Coffee {
     nullable: true,
   })
   notes: string;
+
+  @OneToMany(() => Roast, (roast) => roast.coffee)
+  roasts: Roast[];
 }

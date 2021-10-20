@@ -1,6 +1,7 @@
 import express from 'express';
 import { createConnection } from 'typeorm';
 import CoffeesController from './controllers/CoffeesController';
+import RoastsController from './controllers/RoastsController';
 
 (async () => {
   await createConnection({
@@ -17,6 +18,7 @@ import CoffeesController from './controllers/CoffeesController';
 
   app.use(express.json());
   app.use('/coffees', CoffeesController);
+  app.use('/roasts', RoastsController);
 
   const port = process.env.PORT || 4000;
 
