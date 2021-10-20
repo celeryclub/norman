@@ -35,6 +35,9 @@ export class Coffee {
   @Column()
   purchaseUrl: string;
 
+  @Column({
+    nullable: true,
+  })
   @Column()
   rating: number;
 

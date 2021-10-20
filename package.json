@@ -10,7 +10,8 @@
     "url": "https://github.com/celeryclub/norman-api.git"
   },
   "scripts": {
-    "dev": "nodemon src/app.ts"
+    "dev": "nodemon src/app.ts",
+    "migrate": "node -r ts-node/register scripts/migrate.ts"
   },
   "dependencies": {
     "express": "^4.17.1",
