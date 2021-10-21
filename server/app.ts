@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import { createConnection } from 'typeorm';
 import CoffeesController from './controllers/CoffeesController';
@@ -11,7 +12,7 @@ import RoastsController from './controllers/RoastsController';
     username: 'norman',
     password: 'norman',
     database: 'norman',
-    entities: ['src/models/*.ts'],
+    entities: [path.join(__dirname, 'models/*.ts')],
   });
 
   const app = express();

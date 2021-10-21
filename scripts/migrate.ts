@@ -7,7 +7,7 @@ createConnection({
   username: 'norman',
   password: 'norman',
   database: 'norman',
-  entities: ['src/models/*.ts'],
+  entities: ['server/models/*.ts'],
   synchronize: true,
 })
   .then(() => {
