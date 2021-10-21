@@ -17,8 +17,11 @@ import RoastsController from './controllers/RoastsController';
   const app = express();
 
   app.use(express.json());
+
   app.use('/coffees', CoffeesController);
   app.use('/roasts', RoastsController);
+
+  app.use((req, res) => res.status(404).json({ message: 'Route not found' }));
 
   const port = process.env.PORT || 4000;
 
