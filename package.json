@@ -1,5 +1,5 @@
 {
-  "name": "norman-api",
+  "name": "norman",
   "version": "0.1.0",
   "description": "A cool way to log roast information",
   "private": true,
@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/celeryclub/norman-api.git"
+    "url": "https://github.com/celeryclub/norman.git"
   },
   "scripts": {
     "dev": "nodemon server/app.ts",
