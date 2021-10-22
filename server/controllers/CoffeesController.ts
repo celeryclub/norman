@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
-import { Coffee } from '../models/Coffee';
+import { Coffee } from '../entities/Coffee';
 
 const router = express.Router();
 
