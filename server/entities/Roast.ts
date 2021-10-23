@@ -24,16 +24,23 @@ export class Roast {
   @Column()
   roasterSettings: string;
 
-  @Column()
+  @Column({
+    type: 'time',
+  })
   preheatTime: string;
 
-  @Column()
-  totalRoastTime: string;
-
-  @Column()
+  @Column({
+    type: 'time',
+  })
   firstCrackStartTime: string;
 
   @Column({
+    type: 'time',
+  })
+  totalRoastTime: string;
+
+  @Column({
+    type: 'time',
     nullable: true,
   })
   firstCrackEndTime: string;
@@ -44,6 +51,7 @@ export class Roast {
   })
   ambientTemperature: number;
 
+  // City, Full City, etc.
   @Column({
     nullable: true,
   })
