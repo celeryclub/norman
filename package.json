@@ -19,7 +19,8 @@
     "server:build": "tsc --project server/tsconfig.json --outDir ./dist",
     "client:watch": "webpack --mode=development --config ./client/webpack.config.js --watch",
     "client:build": "webpack --mode=production --config ./client/webpack.config.js",
-    "build": "npm run server:build && npm run client:build"
+    "build": "npm run server:build && npm run client:build",
+    "start": "node ./dist/app.js"
   },
   "dependencies": {
     "express": "^4.17.1",
