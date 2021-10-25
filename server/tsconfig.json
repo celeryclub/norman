@@ -1,6 +1,9 @@
 {
+  "rootDir": ".",
   "compilerOptions": {
-    "jsx": "react",
+    "module": "commonjs",
+    "target": "es2018",
+    "lib": ["es2020"],
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
