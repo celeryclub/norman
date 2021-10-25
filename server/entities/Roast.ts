@@ -17,35 +17,29 @@ export class Roast {
   @Column({ type: 'date' })
   date: Date;
 
-  // Batch size in grams
+  // In grams
   @Column()
   batchSize: number;
 
   @Column()
   roasterSettings: string;
 
-  @Column({
-    type: 'time',
-  })
-  preheatTime: string;
+  // All times in seconds
+  @Column()
+  preheatTime: number;
+
+  @Column()
+  firstCrackStartTime: number;
+
+  @Column()
+  totalRoastTime: number;
 
   @Column({
-    type: 'time',
-  })
-  firstCrackStartTime: string;
-
-  @Column({
-    type: 'time',
-  })
-  totalRoastTime: string;
-
-  @Column({
-    type: 'time',
     nullable: true,
   })
-  firstCrackEndTime: string;
+  firstCrackEndTime: number;
 
-  // Amebient temperature in Fahrenheit
+  // In Fahrenheit
   @Column({
     nullable: true,
   })
