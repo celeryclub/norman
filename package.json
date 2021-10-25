@@ -14,8 +14,12 @@
   },
   "scripts": {
     "migrate:dev": "TS_NODE_PROJECT=server/tsconfig.json node -r ts-node/register server/scripts/migrate.ts",
+    "migrate:prod": "node ./dist/scripts/migrate.js",
     "server:watch": "TS_NODE_PROJECT=server/tsconfig.json nodemon --config ./server/nodemon.json server/app.ts",
-    "client:watch": "webpack --mode=development --config ./client/webpack.config.js --watch"
+    "server:build": "tsc --project server/tsconfig.json --outDir ./dist",
+    "client:watch": "webpack --mode=development --config ./client/webpack.config.js --watch",
+    "client:build": "webpack --mode=production --config ./client/webpack.config.js",
+    "build": "npm run server:build && npm run client:build"
   },
   "dependencies": {
     "express": "^4.17.1",

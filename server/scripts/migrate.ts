@@ -1,3 +1,4 @@
+import path from 'path';
 import { createConnection } from 'typeorm';
 
 createConnection({
@@ -7,7 +8,7 @@ createConnection({
   username: 'norman',
   password: 'norman',
   database: 'norman',
-  entities: ['server/entities/*.ts'],
+  entities: [path.join(__dirname, '../entities/*')],
   synchronize: true,
 })
   .then(() => {

@@ -12,7 +12,7 @@ import RoastsController from './controllers/RoastsController';
     username: 'norman',
     password: 'norman',
     database: 'norman',
-    entities: [path.join(__dirname, 'entities/*.ts')],
+    entities: [path.join(__dirname, './entities/*')],
   });
 
   const app = express();
