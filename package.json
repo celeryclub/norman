@@ -9,6 +9,9 @@
     "type": "git",
     "url": "https://github.com/celeryclub/norman.git"
   },
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "server:watch": "nodemon server/app.ts",
     "server:migrate": "node -r ts-node/register server/scripts/migrate.ts",
