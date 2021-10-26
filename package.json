@@ -13,7 +13,7 @@
     "node": "16.x"
   },
   "scripts": {
-    "migrate:dev": "TS_NODE_PROJECT=server/tsconfig.json node -r ts-node/register server/scripts/migrate.ts",
+    "migrate:dev": "TS_NODE_PROJECT=server/tsconfig.json node -r dotenv/config -r ts-node/register server/scripts/migrate.ts",
     "migrate:prod": "node ./dist/scripts/migrate.js",
     "server:watch": "TS_NODE_PROJECT=server/tsconfig.json nodemon --config ./server/nodemon.json server/app.ts",
     "server:build": "tsc --project server/tsconfig.json --outDir ./dist",
@@ -34,6 +34,7 @@
     "@types/node": "^16.11.2",
     "@types/react": "^17.0.31",
     "@types/react-dom": "^17.0.10",
+    "dotenv": "^10.0.0",
     "html-webpack-plugin": "^5.4.0",
     "nodemon": "^2.0.14",
     "ts-loader": "^9.2.6",

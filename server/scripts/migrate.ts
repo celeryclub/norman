@@ -3,11 +3,7 @@ import { createConnection } from 'typeorm';
 
 createConnection({
   type: 'mariadb',
-  host: 'coffee.local',
-  port: 3306,
-  username: 'norman',
-  password: 'norman',
-  database: 'norman',
+  url: process.env.DATABASE_URL,
   entities: [path.join(__dirname, '../entities/*')],
   synchronize: true,
 })
