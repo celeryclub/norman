@@ -6,7 +6,7 @@ import RoastsController from './controllers/RoastsController';
 
 (async () => {
   await createConnection({
-    type: 'mariadb',
+    type: 'postgres',
     url: process.env.DATABASE_URL,
     entities: [path.join(__dirname, './entities/*')],
   });
