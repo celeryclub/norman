@@ -1,15 +1,24 @@
 import path from 'path';
 import express from 'express';
-import { createConnection } from 'typeorm';
+import { createConnection, ConnectionOptions } from 'typeorm';
 import CoffeesController from './controllers/CoffeesController';
 import RoastsController from './controllers/RoastsController';
 
 (async () => {
-  await createConnection({
+  const connectionOptions: ConnectionOptions = {
     type: 'postgres',
     url: process.env.DATABASE_URL,
     entities: [path.join(__dirname, './entities/*')],
-  });
+  };
+
+  if (process.env.NODE_ENV === 'production') {
+    // @ts-ignore
+    connectionOptions.extra = {
+      ssl: true,
+    };
+  }
+
+  await createConnection(connectionOptions);
 
   const app = express();
 
