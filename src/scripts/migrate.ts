@@ -1,12 +1,21 @@
 import path from 'path';
-import { createConnection } from 'typeorm';
+import { createConnection, ConnectionOptions } from 'typeorm';
 
-createConnection({
+const connectionOptions: ConnectionOptions = {
   type: 'postgres',
   url: process.env.DATABASE_URL,
   entities: [path.join(__dirname, '../entities/*')],
   synchronize: true,
-})
+};
+
+if (process.env.NODE_ENV === 'production') {
+  // @ts-ignore
+  connectionOptions.extra = {
+    ssl: true,
+  };
+}
+
+createConnection(connectionOptions)
   .then(() => {
     console.log('Database has been migrated');
     process.exit();
