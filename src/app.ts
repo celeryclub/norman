@@ -24,16 +24,10 @@ import RoastsController from './controllers/RoastsController';
 
   app.use(express.json());
 
-  app.use('/api/coffees', CoffeesController);
-  app.use('/api/roasts', RoastsController);
+  app.use('/coffees', CoffeesController);
+  app.use('/roasts', RoastsController);
 
-  // This is for real files like JS
-  app.use(express.static(path.join(__dirname, '../public')));
-
-  // This is for routes handled by React Router
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
-  });
+  app.use((req, res) => res.status(404).json({ message: 'Route not found' }));
 
   const port = process.env.PORT || 4000;
 
