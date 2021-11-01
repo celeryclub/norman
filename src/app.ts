@@ -22,6 +22,12 @@ import RoastsController from './controllers/RoastsController';
 
   const app = express();
 
+  app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    next();
+  });
+
   app.use(express.json());
 
   app.use('/coffees', CoffeesController);
