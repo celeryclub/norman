@@ -22,6 +22,28 @@ import RoastsController from './controllers/RoastsController';
 
   const app = express();
 
+  // If the requesting IP isn't in the allowlist, send back a 403.
+  if (process.env.NODE_ENV === 'production') {
+    app.use(function (req, res, next) {
+      const xForwardedFor = req.headers['x-forwarded-for'];
+      let requestIp;
+
+      if (xForwardedFor) {
+        requestIp = Array.isArray(xForwardedFor)
+          ? xForwardedFor[0]
+          : xForwardedFor;
+      } else {
+        requestIp = req.socket.remoteAddress;
+      }
+
+      if (process.env.IP_ALLOWLIST.split(',').includes(requestIp)) {
+        next();
+      } else {
+        res.status(403).json({ message: 'Access denied' });
+      }
+    });
+  }
+
   app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -33,7 +55,7 @@ import RoastsController from './controllers/RoastsController';
   app.use('/coffees', CoffeesController);
   app.use('/roasts', RoastsController);
 
-  app.use((req, res) => res.status(404).json({ message: 'Route not found' }));
+  app.use((req, res) => res.status(404).json({ message: 'Not found' }));
 
   const port = process.env.PORT || 4000;
 
