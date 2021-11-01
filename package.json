@@ -13,9 +13,10 @@
     "node": "16.x"
   },
   "scripts": {
+    "watch": "nodemon ./src/app.ts",
+    "deploy": "git push heroku main",
     "migrate:dev": "node -r dotenv/config -r ts-node/register ./src/scripts/migrate.ts",
     "migrate:prod": "node ./dist/scripts/migrate.js",
-    "watch": "nodemon ./src/app.ts",
     "build": "tsc --outDir ./dist",
     "start": "node ./dist/app.js"
   },
