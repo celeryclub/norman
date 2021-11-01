@@ -1,5 +1,5 @@
 {
-  "watch": ["server/**/*.ts"],
+  "watch": ["src/**/*.ts"],
   "execMap": {
     "ts": "node -r dotenv/config -r ts-node/register"
   }
