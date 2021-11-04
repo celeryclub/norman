@@ -20,7 +20,11 @@ router.post('/', async (req: Request, res: Response) => {
 
 router.get('/', async (req: Request, res: Response) => {
   const coffeeRepository = getRepository(Coffee);
-  const coffees = await coffeeRepository.find();
+  const coffees = await coffeeRepository.find({
+    order: {
+      arrivalDate: 'DESC',
+    },
+  });
 
   res.json(coffees);
 });
