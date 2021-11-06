@@ -11,7 +11,7 @@ router.post('/', async (req: Request, res: Response) => {
   try {
     await coffeeRepository.save(coffee);
   } catch (e) {
-    res.status(400).json({ message: e.sqlMessage });
+    res.status(400).json({ message: e.message ? e.message : e });
     return;
   }
 
