@@ -1,5 +1,6 @@
 import path from 'path';
 import express from 'express';
+import cors from 'cors';
 import { createConnection, ConnectionOptions } from 'typeorm';
 import CoffeesController from './controllers/CoffeesController';
 import RoastsController from './controllers/RoastsController';
@@ -44,12 +45,7 @@ import RoastsController from './controllers/RoastsController';
     });
   }
 
-  app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
-    next();
-  });
-
+  app.use(cors());
   app.use(express.json());
 
   app.use('/coffees', CoffeesController);
