@@ -1,6 +1,7 @@
 import path from 'path';
 import express from 'express';
 import cors from 'cors';
+import morgan from 'morgan';
 import { createConnection, ConnectionOptions } from 'typeorm';
 import CoffeesController from './controllers/CoffeesController';
 import RoastsController from './controllers/RoastsController';
@@ -46,6 +47,7 @@ import RoastsController from './controllers/RoastsController';
   }
 
   app.use(cors());
+  app.use(morgan('short'));
   app.use(express.json());
 
   app.use('/coffees', CoffeesController);
