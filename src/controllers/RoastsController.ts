@@ -29,4 +29,28 @@ router.get('/', async (req: Request, res: Response) => {
   res.json(roasts);
 });
 
+router.get('/recent', async (req: Request, res: Response) => {
+  const roastRepository = getRepository(Roast);
+
+  const cafRoasts = await roastRepository.find({
+    relations: ['coffee'],
+    where: { coffee: { decaf: false } },
+    take: 2,
+    order: {
+      date: 'DESC',
+    },
+  });
+
+  const decafRoasts = await roastRepository.find({
+    relations: ['coffee'],
+    where: { coffee: { decaf: true } },
+    take: 2,
+    order: {
+      date: 'DESC',
+    },
+  });
+
+  res.json({ cafRoasts, decafRoasts });
+});
+
 export default router;
