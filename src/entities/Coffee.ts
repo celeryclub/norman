@@ -39,6 +39,11 @@ export class Coffee {
   @Column({
     nullable: true,
   })
+  sentiment: boolean;
+
+  @Column({
+    nullable: true,
+  })
   rating: number;
 
   @Column({

@@ -54,6 +54,11 @@ export class Roast {
   @Column({
     nullable: true,
   })
+  sentiment: boolean;
+
+  @Column({
+    nullable: true,
+  })
   rating: number;
 
   @Column({
