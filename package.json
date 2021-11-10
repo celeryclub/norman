@@ -16,7 +16,7 @@
     "watch": "nodemon ./src/app.ts",
     "deploy": "git push heroku main",
     "migrate:dev": "node -r dotenv/config -r ts-node/register ./src/scripts/migrate.ts",
-    "migrate:prod": "node ./dist/scripts/migrate.js",
+    "migrate:prod": "heroku run node ./dist/scripts/migrate.js",
     "build": "tsc --outDir ./dist",
     "start": "node ./dist/app.js"
   },
