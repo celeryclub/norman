@@ -1,8 +1,8 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { Coffee } from './Coffee';
+import Coffee from './Coffee';
 
 @Entity('roasts')
-export class Roast {
+export default class Roast {
   @PrimaryGeneratedColumn()
   id: number;
 

@@ -19,8 +19,12 @@
     "migrate:prod": "heroku run node ./dist/scripts/migrate.js",
     "build": "tsc --outDir ./dist",
     "start": "node ./dist/app.js",
+    "tsc": "tsc --noEmit",
     "prettier": "prettier --check .",
-    "prettier:fix": "prettier --write ."
+    "prettier:fix": "prettier --write .",
+    "eslint": "eslint .",
+    "eslint:fix": "eslint . --fix",
+    "lint": "yarn tsc && yarn prettier && yarn eslint"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -32,7 +36,14 @@
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
     "dotenv": "^10.0.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
     "nodemon": "^2.0.14",
     "prettier": "^2.4.1",
     "ts-node": "^10.4.0",

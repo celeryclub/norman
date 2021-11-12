@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
-import { Roast } from '../entities/Roast';
+import Roast from '../entities/Roast';
 
 const router = express.Router();
 

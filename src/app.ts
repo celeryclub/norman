@@ -26,7 +26,7 @@ import RoastsController from './controllers/RoastsController';
 
   // If the requesting IP isn't in the allowlist, send back a 403.
   if (process.env.NODE_ENV === 'production') {
-    app.use(function (req, res, next) {
+    app.use(function checkIpAllowlist(req, res, next) {
       const xForwardedFor = req.headers['x-forwarded-for'];
       let requestIp;
 
