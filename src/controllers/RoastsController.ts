@@ -21,6 +21,7 @@ router.post('/', async (req: Request, res: Response) => {
 router.get('/', async (req: Request, res: Response) => {
   const roastRepository = getRepository(Roast);
   const roasts = await roastRepository.find({
+    relations: ['coffee'],
     order: {
       date: 'DESC',
     },
