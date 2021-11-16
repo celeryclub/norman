@@ -29,4 +29,20 @@ router.get('/', async (req: Request, res: Response) => {
   res.json(coffees);
 });
 
+router.get('/:id', async (req: Request, res: Response) => {
+  const coffeeRepository = getRepository(Coffee);
+  const coffee = await coffeeRepository.findOne(req.params.id, {
+    relations: ['roasts'],
+  });
+
+  if (!coffee) {
+    res
+      .status(404)
+      .json({ message: `No coffee found with ID ${req.params.id}` });
+    return;
+  }
+
+  res.json(coffee);
+});
+
 export default router;
