@@ -36,7 +36,7 @@ router.get('/recent', async (req: Request, res: Response) => {
   const cafRoasts = await roastRepository.find({
     relations: ['coffee'],
     where: { coffee: { decaf: false } },
-    take: 2,
+    take: 3,
     order: {
       date: 'DESC',
     },
@@ -45,7 +45,7 @@ router.get('/recent', async (req: Request, res: Response) => {
   const decafRoasts = await roastRepository.find({
     relations: ['coffee'],
     where: { coffee: { decaf: true } },
-    take: 2,
+    take: 3,
     order: {
       date: 'DESC',
     },
