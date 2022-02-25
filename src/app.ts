@@ -24,27 +24,27 @@ import RoastsController from './controllers/RoastsController';
 
   const app = express();
 
-  // If the requesting IP isn't in the allowlist, send back a 403.
-  if (process.env.NODE_ENV === 'production') {
-    app.use(function checkIpAllowlist(req, res, next) {
-      const xForwardedFor = req.headers['x-forwarded-for'];
-      let requestIp;
+  // // If the requesting IP isn't in the allowlist, send back a 403.
+  // if (process.env.NODE_ENV === 'production') {
+  //   app.use(function checkIpAllowlist(req, res, next) {
+  //     const xForwardedFor = req.headers['x-forwarded-for'];
+  //     let requestIp;
 
-      if (xForwardedFor) {
-        requestIp = Array.isArray(xForwardedFor)
-          ? xForwardedFor[0]
-          : xForwardedFor;
-      } else {
-        requestIp = req.socket.remoteAddress;
-      }
+  //     if (xForwardedFor) {
+  //       requestIp = Array.isArray(xForwardedFor)
+  //         ? xForwardedFor[0]
+  //         : xForwardedFor;
+  //     } else {
+  //       requestIp = req.socket.remoteAddress;
+  //     }
 
-      if (process.env.IP_ALLOWLIST.split(',').includes(requestIp)) {
-        next();
-      } else {
-        res.status(403).json({ message: 'Access denied' });
-      }
-    });
-  }
+  //     if (process.env.IP_ALLOWLIST.split(',').includes(requestIp)) {
+  //       next();
+  //     } else {
+  //       res.status(403).json({ message: 'Access denied' });
+  //     }
+  //   });
+  // }
 
   app.use(cors());
   app.use(morgan('short'));
